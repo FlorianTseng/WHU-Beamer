@@ -1,0 +1,357 @@
+\documentclass{beamer}
+\usepackage{hyperref}
+\usepackage[T1]{fontenc}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{newtxtext}
+% \usepackage{newtxmath} % 数学新罗马字体
+\usepackage{fontawesome5}
+\usepackage{orcidlink}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{latexsym,amsmath,xcolor,multicol,booktabs,calligra}
+\usepackage{graphicx,pstricks,listings,stackengine,amsfonts}
+\usepackage{caption, subfigure}
+\usepackage{setspace}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage[blue]{WHUBeamer}
+
+\author[brief name]{\textbf{
+    name~\orcidlink{0000-1111-2222-3333}\\
+    Supervised by Prof. XXX~\orcidlink{3333-4444-5555-6666}
+}}
+
+\title[brief title]{\textbf{complete title}}
+\subtitle{subtitle}
+\institute{Your Institution}
+\date{\textit{\today}}
+
+
+\def\cmd#1{\texttt{\color{red}\footnotesize $\backslash$#1}}
+\def\env#1{\texttt{\color{blue}\footnotesize #1}}
+
+\lstset{
+    basicstyle=\ttfamily\small,
+    keywordstyle=\bfseries\color{red!0!green!0!blue!100},
+    emphstyle=\ttfamily\color{red!100!green!0!blue!0},    % Custom highlighting style
+    stringstyle=\color{red!0!green!100!blue!0},
+    numbers=left,
+    numberstyle=\small\color{gray!50},
+    rulesepcolor=\color{red!20!green!20!blue!20},
+    frame=shadowbox
+}
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+    \begin{figure}[htpb]
+        \begin{center}
+            \includegraphics[width=0.35\linewidth]{pic/dark.pdf}
+        \end{center}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \tableofcontents[sectionstyle=show,subsectionstyle=show/shaded/hide,subsubsectionstyle=show/shaded/hide]
+\end{frame}
+
+
+\section{Background}
+
+\begin{frame}{What's \& Why STEG?}
+    \small
+
+	\begin{itemize}
+        % \setstretch{1.5}
+		\item {
+			Thermoelectric materials often perform suboptimally in wide temperature range applications;
+		}
+		\item {
+			STEG can enhance overall performance.
+		}
+	\end{itemize}
+
+	\begin{figure}
+		\centering
+		\includegraphics[scale=0.22]{figs/fig1.pdf}
+		\captionsetup{font=small}
+        \caption{(a) STEG structure; (b) Dependence of thermoelectric figure of merit on temperature for different materials.}
+		\label{fig1}
+	\end{figure}
+
+\end{frame}
+
+
+\begin{frame}{What's Machine Learning (ML)?}
+    \small
+	\begin{itemize}
+        % \setstretch{1.5}
+		\item {
+			ML is essentially a mathematical model that reflects the mapping relationship between inputs and outputs;
+		}
+		\item {
+			The mapping relationship needs to be determined through training on large datasets.
+		}
+	\end{itemize}
+
+	\begin{figure}
+		\centering
+		\includegraphics[scale=0.22]{figs/fig2.pdf}
+		\caption{Common basic machine learning models. (a) Decision tree model; (b) Artificial neural network model.}
+		\label{fig2}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{What's Evolutionary Computation (EC)?}
+    \small
+	\begin{itemize}
+        % \setstretch{1.5}
+		\item {
+			EC solves optimization problems by mimicking natural behaviors;
+		}
+		\item {
+			EC + ML, using pre-trained surrogate models for evolution.
+		}
+	\end{itemize}
+
+	\begin{figure}
+		\centering
+		\includegraphics[scale=0.20]{figs/fig3.pdf}
+		\caption{Applications of evolutionary computation. (a) Particle swarm optimization for drone trajectory optimization (Int. J. Aerosp. Eng. 2020.1 (2020): 8820284.); (b) Genetic algorithm for constructing multi-objective optimization Pareto front. (\url{https://github.com/Bin-Cao/Bgolearn})}
+		\label{fig3}
+	\end{figure}
+\end{frame}
+
+
+\section{Renew. Energy, 2020, 156: 710-718.}
+
+\begin{frame}{Optimization Analysis of Segmented Thermoelectric Generator Based on Genetic Algorithm}
+	\begin{block}{\textbf{Innovations}}
+		\begin{enumerate}
+			\item Developed an optimization method based on genetic algorithms for STEG.
+			\item Selected thermoelectric materials based on compatibility factors.
+			\item The integral optimization of the P-segment TEG is performed by GA.
+			\item The conversion efficiency and power output of STEG are significantly improved.
+		\end{enumerate}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Numerical Model \& Solution Method}
+    \begin{columns}
+        % Left column
+        \begin{column}{.35\textwidth}
+            \vfill
+            \begin{figure}
+                \includegraphics[scale=0.6]{figs/STEG结构.jpg}
+                \caption{Numerical Model}
+                \label{fig4}
+            \end{figure}
+        \end{column}
+        
+        % Right column
+        \begin{column}{.7\textwidth}
+            \begin{itemize}
+                \item \textbf{Discrete Control Equation:}
+                {\small
+                \begin{align}
+                    \begin{aligned}
+                        &K_j^i\left( {T_j^{i - 1} - T_j^i} \right) 
+                        - K_j^{i + 1}\left( {T_j^i - T_j^{i + 1}} \right) \\ 
+                        &+ IT_j^i\left( {\alpha _j^i - \alpha _j^{i + 1}} \right)+ \frac{1}{2}{I^2}\left( {R_j^i + R_j^{i + 1}} \right) \\ 
+                        &= 0
+                    \end{aligned}
+                \end{align}
+                }
+
+                \item \textbf{Thermoelectric Characteristics:}
+                {\small
+                \begin{align}
+                    K_j^i &= \frac{A_j}{L_j^i} \cdot \frac{\lambda_j\left(T_j^{i-1}\right) + \lambda_j\left(T_j^i\right)}{2} \\[5pt]
+                    \alpha_j^i &= \frac{\alpha_j\left(T_j^{i-1}\right) + \alpha_j\left(T_j^i\right)}{2} \\[5pt]
+                    R_j^i &= \frac{L_j^i}{2A_j} \cdot \left[\rho_j\left(T_j^{i-1}\right) + \rho\left(T_j^i\right)\right]
+                \end{align}
+                }
+            
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+\section{Energy, 2018, 147: 1060-1069.}
+
+\begin{frame}{STEG Optimization Design Based on 3D Numerical Simulation and Multi-objective Genetic Algorithm}
+    \begin{block}{\textbf{Innovations}}
+        \begin{enumerate}
+            \item item 1
+            \item item 2
+        \end{enumerate}   
+    \end{block}
+\end{frame}
+
+
+\begin{frame}{Plate-shaped STEG Structure and Parameters}
+    \begin{columns}
+        % Left Column
+        \begin{column}{.35\textwidth}
+            \vfill
+            \begin{figure}
+                \centering
+                \resizebox{\textwidth}{!}{\includegraphics{figs/华科结构.jpg}} % Auto-adjust image size
+                \caption{STEG Plate Module}
+                \label{fig7}
+            \end{figure}
+        \end{column}
+        
+        % Right Column
+        \begin{column}{.7\textwidth}
+            \begin{table}[h!]
+                \centering
+                \caption{Model Parameters and Dimensions.}
+                \resizebox{\textwidth}{!}{ % Auto-adjust table size
+                    \begin{tabular}{ccc}
+                    \toprule
+                    \textbf{Parameter} & \textbf{Value} & \textbf{Unit} \\ 
+                    \midrule
+                    Total number of thermoelectric arms & $N^2$ & 1 \\ 
+                    Total number of thermoelectric pairs $N_{par}$ & $\frac{N^2}{2}$ & 1 \\ 
+                    Arm-to-pair area ratio $Y$ & $Y$ & 1 \\ 
+                    Substrate length $I_{substrate}$ & 40 & mm \\ 
+                    Thermoelectric arm length $h_{eg}$ & 3 & mm \\ 
+                    Cold end $p$-type dimensionless length $L_{p, c}$ & $I_{p, c}/l_{leg}$ & 1 \\ 
+                    Cold end $n$-type dimensionless length $L_{n, c}$ & $I_{n, c}/l_{leg}$ & 1 \\ 
+                    Hot end $p$-type dimensionless length $L_{p, h}$ & $1 - L_{p, c}$ & 1 \\ 
+                    Hot end $n$-type dimensionless length $L_{n, h}$ & $1 - L_{n, c}$ & 1 \\ 
+                    Thermoelectric arm width $W_{TE}$ & $\frac{y \times I_{substrate}}{N}$ & mm \\ 
+                    Thermoelectric arm cross-sectional area $A_{TE}$ & $W_{TE} \times W_{TE}$ & mm$^2$ \\ 
+                    Semiconductor volume $V$ & $N^2 \times A_{TE} \times h_{eg}$ & mm$^3$ \\ 
+                    \bottomrule
+                    \end{tabular}
+                }
+            \end{table}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+\begin{frame}{Problem Description}
+    \small
+    \begin{block}{Governing Equations: Theoretical Basis}
+        \begin{enumerate}
+            \item Energy conservation: \[\nabla \cdot \vec{q} = Q\]
+            \item Current continuity: \[\nabla \cdot \vec{j} = 0\]
+            \item Thermoelectric constitutive equations: \[\left\{ \begin{array}{l}
+\vec q =  - \lambda \nabla T + \alpha T \cdot \vec j\\
+Q =  - \nabla V \cdot \vec j\\
+\vec j =  - \sigma (\nabla V + \alpha \nabla T)
+\end{array} \right.\]
+        \end{enumerate}
+    \end{block}
+    In the above equations, \(\vec{q}\) is the heat flux vector, \(Q\) is the Joule heating source, \(\vec{j}\) is the current density vector, \(\lambda\) is the thermal conductivity, \(\alpha\) is the Seebeck coefficient, and \(\sigma\) is the electrical conductivity.
+\end{frame}
+
+
+\begin{frame}
+    \begin{block}{Objective Function: Algorithm Optimization}
+        \begin{itemize}
+            \item The objective is to minimize the semiconductor volume and maximize the output power:
+            \[
+            \left\{ \begin{array}{l}
+            {J_1} = V'\\
+            {J_2} =  - P =  - I{V_{{\rm{module}}}} =  - {N_{{\rm{pair}}}}I{V_{{\rm{pair}}}}
+            \end{array} \right.
+            \]
+            \item Constraints:
+            \[
+            \left\{
+            \begin{array}{l}
+            0.1 \leq I \leq 5 \\
+            20 \leq N \leq 50 \\
+            0.3 \leq \gamma \leq 0.9 \\
+            0.3 \leq L_{p,c} \leq 0.6 \\
+            0.2 \leq L_{n,c} \leq 0.5 \\
+            P \geq 0 \\
+            T_{p,interface} \leq 550 \\
+            T_{n,interface} \leq 500
+            \end{array}
+            \right.
+            \]
+        \end{itemize}
+    \end{block}
+    
+\end{frame}
+    
+\begin{frame}{Optimization Results}
+    \small
+    \begin{figure}
+		\centering
+		\includegraphics[scale=0.26]{figs/fig8.png}
+		\caption{Using TOPSIS to determine the most feasible TEG design from the candidate options. This TEG surpasses traditional TEGs in terms of (b) thermoelectric performance, (c) output voltage and current, and (d) output power and conversion efficiency.}
+		\label{fig8}
+	\end{figure}
+\end{frame}
+
+
+\section{Appl. Energy, 2024, 355: 122216.}
+
+\begin{frame}{Currently the GOAT}
+    \small
+    \begin{block}{\textbf{Innovations}}
+        \begin{enumerate}
+            \item item 1
+            \item item 2
+        \end{enumerate}   
+    \end{block}
+\end{frame}
+
+
+\begin{frame}{COMSOL-Multiphysics Simulation Data Generation}
+    \begin{table}[htbp]
+    \caption{Input Parameter Ranges and Other Geometric Values}
+    \centering
+    \begin{tabular}{@{}lccc@{}}
+    \toprule
+    Parameter & Symbol & Value & Unit \\ \midrule
+    Total length of TE legs & $L$ & $10$ & mm \\
+    Length of each p-type segment & $L_i^P$ & $0.1 - 9.7$ & mm \\
+    Length of each n-type segment & $L_k^N$ & $0.1 - 9.7$ & mm \\
+    Height of alumina & $l_{Al_2O_3}$ & $1$ & mm \\
+    Height of copper electrode & $l_{Cu}$ & $1$ & mm \\
+    Radius of external load resistance & $r$ & $1.5$ & mm \\
+    Length of horizontal rods & $l$ & $8$ & mm \\
+    External load resistivity & $\rho$  & $10^{-7} - 10^{-2}$ & $\Omega m$ \\
+    Area of TE legs & $A$ & $3 \times 3$ & mm$^2$ \\ \bottomrule
+    \end{tabular}
+    \end{table}
+\end{frame}
+
+
+\section{Discussion}
+
+\begin{frame}
+    \begin{block}{Summary}
+        \begin{enumerate}
+            \item item 1
+            \item item 2
+        \end{enumerate}
+    \end{block}
+    \begin{alertblock}{Insights}
+        \begin{enumerate}
+            \item item 1
+            \item item 2
+            \item item 3
+        \end{enumerate}
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}
+    \begin{center}
+        {\Huge\calligra Thanks!}
+    \end{center}
+\end{frame}
+
+\end{document}

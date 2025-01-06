@@ -1,0 +1,90 @@
+\mode<presentation>
+
+%\DeclareOptionBeamer{secheader}{\beamer@secheadertrue}
+\ProcessOptionsBeamer
+
+\xdefinecolor{whu}{RGB}{30 , 55 , 113}
+\DeclareOption{blue}{\xdefinecolor{whu}{RGB}{30 , 55 , 113}
+\setbeamertemplate{background}{
+    \includegraphics[width=1\paperwidth,height=\paperheight]{pic/whu_bg.pdf}
+}}
+\ProcessOptions\relax
+\xdefinecolor{whu@orange}{RGB}{240,140,0}
+
+\useoutertheme[footline=authorinstitutetitle,subsection=false]{smoothbars}
+\makeatletter % [add curpage/total page at the bottom](http://tex.stackexchange.com/questions/100838/beamer-dresden-theme-miniframes-appeareance-and-frame-number-insertion)
+\newcommand{\frameofframes}{/}
+\newcommand{\setframeofframes}[1]{\renewcommand{\frameofframes}{#1}}
+% author | data | title | number
+\defbeamertemplate*{footline}{whu_beamer}{%
+	\leavevmode%
+	\hbox{%
+		\begin{beamercolorbox}[wd=.25\paperwidth,ht=2.5ex,dp=1.125ex,center]{title in head/foot}%
+			\usebeamerfont{author in head/foot}\insertshortauthor
+		\end{beamercolorbox}%
+		\begin{beamercolorbox}[wd=.25\paperwidth,ht=2.5ex,dp=1.125ex,center]{title in head/foot}%
+			\usebeamerfont{author in head/foot}\insertshortdate
+		\end{beamercolorbox}%
+		\begin{beamercolorbox}[wd=.435\paperwidth,ht=2.5ex,dp=1.125ex,center]{author in head/foot}%
+			\usebeamerfont{title in head/foot}\insertshorttitle
+		\end{beamercolorbox}%
+		\begin{beamercolorbox}[wd=0.065\paperwidth,ht=2.5ex,dp=1.125ex,right]{author in head/foot}%
+			\insertframenumber{} / \inserttotalframenumber\hspace*{1ex}
+	\end{beamercolorbox}}%
+	\vskip0pt%
+}
+\makeatother
+
+\useinnertheme{circles}
+\usefonttheme{professionalfonts}
+
+%\useoutertheme{default}
+%\useinnertheme[shadow=true]{rounded}
+
+\setbeamercolor{footline}{bg=whu}
+\setbeamercolor{frametitle}{bg=whu,fg=white}
+\setbeamercolor{title}{bg=whu}
+%\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{bibliography item}[text]
+\setbeamertemplate{caption}[numbered]
+
+\setbeamercolor{palette primary}{use=structure,fg=white,bg=structure.fg}
+\setbeamercolor{palette secondary}{use=structure,fg=white,bg=structure.fg!75!black}
+\setbeamercolor{palette tertiary}{use=structure,fg=white,bg=structure.fg!50!black}
+\setbeamercolor{palette quaternary}{fg=white,bg=structure.fg!50!black}
+%\setbeamercolor*{sidebar}{use=structure,bg=structure.fg}
+\setbeamercolor{titlelike}{parent=palette primary}
+
+%% try
+% setting the color of block, example and alerted
+\setbeamercolor{block title}{bg=whu,fg=white}
+\setbeamercolor{block title alerted}{use = alerted text, fg = white, bg = whu@orange}
+\setbeamercolor{block title example}{use={normal text,example text},bg=white,fg=whu}
+\setbeamercolor{fine separation line}{}
+\setbeamercolor{item projected}{fg=white}
+\setbeamercolor{palette sidebar primary}{use=normal text,fg=normal text.fg}
+\setbeamercolor{palette sidebar quaternary}{use=structure,fg=structure.fg}
+\setbeamercolor{palette sidebar secondary}{use=structure,fg=structure.fg}
+\setbeamercolor{palette sidebar tertiary}{use=normal text,fg=normal text.fg}
+%\setbeamercolor{palette sidebar quaternary}{fg=white}
+\setbeamercolor{section in sidebar}{fg=brown}
+\setbeamercolor{section in sidebar shaded}{fg=grey}
+
+\setbeamercolor{separation line}{}
+\setbeamercolor{sidebar}{bg=whu}
+\setbeamercolor{sidebar}{parent=palette primary}
+\setbeamercolor{structure}{fg=whu}
+\setbeamercolor{subsection in sidebar}{fg=brown}
+\setbeamercolor{subsection in sidebar shaded}{fg=grey}
+\AtBeginSection[]{
+	\begin{frame}
+		\tableofcontents[sectionstyle=show/shaded,subsectionstyle=hide,subsubsectionstyle=hide]
+	\end{frame}
+}
+%\AtBeginSubsection[]{
+%	\begin{frame}
+%		\tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/shaded/hide,subsubsectionstyle=show/shaded/hide]
+%	\end{frame}
+%}
+\mode
+<all>
